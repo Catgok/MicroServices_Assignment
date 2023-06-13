@@ -5,12 +5,15 @@ import com.catgok.domain.Order.entity.Order;
 import com.catgok.domain.Order.service.OrderDomainService;
 import com.catgok.domain.OrderDetail.service.OrderDetailDomainService;
 import com.catgok.infrastructure.feign.cart.CartFeignService;
+import com.catgok.infrastructure.loadblance.LoadBalanceConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@LoadBalancerClient(name = "cart", configuration = LoadBalanceConfiguration.class)
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -23,7 +26,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int createOrder(Order order) {
         // 创建订单
-        order.setOrderState(0);
         int orderId = orderDomainService.saveOrder(order);
         order.setOrderId(orderId);
         // 添加订单明细

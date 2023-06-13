@@ -24,7 +24,6 @@ public class OrderDetailDomainService {
     CartFeignService cartfeignservice;
 
     public int saveOrderDetailBatch(Order order) {
-        //todo
         try {
             List<OrderDetail> orderDetails = new ArrayList<>();
             Cart cart = new Cart();

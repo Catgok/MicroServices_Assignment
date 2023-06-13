@@ -16,6 +16,7 @@
         <module>business</module>
         <module>eureka</module>
         <module>eureka_2</module>
+        <module>config</module>
     </modules>
 
     <dependencyManagement>

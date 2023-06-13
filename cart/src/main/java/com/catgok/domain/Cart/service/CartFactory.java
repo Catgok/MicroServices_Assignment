@@ -4,10 +4,13 @@ import com.catgok.domain.Cart.entity.Business;
 import com.catgok.domain.Cart.entity.Cart;
 import com.catgok.domain.Cart.repository.CartPo;
 import com.catgok.infrastructure.feign.business.BusinessFeignService;
+import com.catgok.infrastructure.loadbalance.LoadBalanceConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 
 @Service
+@LoadBalancerClient(name = "business", configuration = LoadBalanceConfiguration.class)
 public class CartFactory {
     @Autowired
     BusinessFeignService businessFeignService;

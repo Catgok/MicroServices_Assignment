@@ -19,6 +19,7 @@ public class OrderDomainService {
 
     public int saveOrder(Order order) {
         try {
+            order.setOrderState(0);
             OrderPo o = orderDao.save(orderFactory.createOrderPO(order));
             return o.getOrderId();
         } catch (Exception e) {
@@ -30,7 +31,6 @@ public class OrderDomainService {
     public Order getOrderById(Integer orderId) {
         return orderFactory.createOrder(orderDao.getOrderPoByOrderId(orderId));
     }
-
 
     public List<Order> listOrdersByUserId(String userId) {
         List<OrderPo> orderPos = orderDao.getOrderPosByUserId(userId);
