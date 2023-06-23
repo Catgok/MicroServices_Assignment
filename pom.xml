@@ -17,6 +17,9 @@
         <module>eureka</module>
         <module>eureka_2</module>
         <module>config</module>
+        <module>config_2</module>
+        <module>user_2</module>
+        <module>order_2</module>
     </modules>
 
     <dependencyManagement>
